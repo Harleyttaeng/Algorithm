@@ -2,6 +2,7 @@ package com.algorithmpractice.helper;
 
 import com.algorithmpractice.model.BinaryTree;
 import com.algorithmpractice.model.TreeNode;
+import com.algorithmpractice.helper.TreeHelper;
 import org.junit.Test;
 
 import java.util.Arrays;

@@ -1,6 +1,5 @@
 package com.algorithmpractice.helper;
 
-
 import com.algorithmpractice.model.TreeNode;
 
 import java.util.LinkedList;
