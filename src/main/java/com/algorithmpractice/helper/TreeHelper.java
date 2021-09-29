@@ -1,22 +1,24 @@
 package com.algorithmpractice.helper;
 
-import com.algorithmpractice.model.BinarySearchTree;
-import com.algorithmpractice.model.BinaryTree;
+
 import com.algorithmpractice.model.TreeNode;
 
-import java.util.Collections;
-import java.util.List;
+import java.util.LinkedList;
 
 public class TreeHelper {
-//    public static BinarySearchTree convertBinaryTreeToBinarySearchTree(BinaryTree binaryTree) {
-//        BinarySearchTree output;
-//        List<Integer> inOrderArray = binaryTree.toArrayInOrder();
-//        Collections.sort(inOrderArray);
-//    }
-//    
-//    private static TreeNode updateBinaryTreeInOrder(TreeNode treeNode, List<Integer> inOrderArray) {
-//        if (treeNode.getLeftNode() == null && treeNode.getRightNode() == null) {
-//            return treeNode;
-//        }
-//    }
+    public static TreeNode convertLinkedListToBalancedBST(LinkedList<Integer> list) {
+        TreeNode rootNode;
+        if (list.size() == 1) {
+            rootNode = new TreeNode(list.getFirst());
+        } else if (list.size() == 2) {
+            rootNode = new TreeNode(list.getLast());
+            rootNode.setLeftNode(new TreeNode(list.getFirst()));
+        } else {
+            rootNode = new TreeNode(list.get(list.size() / 2));
+            rootNode.setLeftNode(convertLinkedListToBalancedBST(new LinkedList<>(list.subList(0, list.size() / 2))));
+            rootNode.setRightNode(convertLinkedListToBalancedBST(new LinkedList<>(list.subList(list.size() / 2+ 1, list.size()))));
+        }
+        return rootNode;
+    }
+
 }
