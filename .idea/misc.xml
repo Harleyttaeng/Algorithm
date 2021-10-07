@@ -14,8 +14,8 @@
   <component name="SbtLocalSettings">
     <option name="projectSyncType">
       <map>
-        <entry key="$USER_HOME$/IdeaProjects/data_atlas/webapp" value="PREVIEW" />
-        <entry key="$USER_HOME$/IdeaProjects/data_atlas_scrapers/Generic-Scanner" value="PREVIEW" />
+        <entry key="$PROJECT_DIR$/../IdeaProjects/data_atlas/webapp" value="PREVIEW" />
+        <entry key="$PROJECT_DIR$/../IdeaProjects/data_atlas_scrapers/Generic-Scanner" value="PREVIEW" />
       </map>
     </option>
   </component>
