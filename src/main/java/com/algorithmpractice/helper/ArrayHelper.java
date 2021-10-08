@@ -68,4 +68,52 @@ public class ArrayHelper {
         }
         return result;
     }
+
+    /**
+     * 4. Median of Two Sorted Arrays
+     * Given two sorted arrays nums1 and nums2 of size m and n respectively, return the median of the two sorted arrays.
+     *
+     * The overall run time complexity should be O(log (m+n)).
+     * @return median of 2 sorted arrays
+     */
+    public static double findMediumOfTwoSortedArray(int[] nums1, int[] nums2) {
+        if (nums1.length > nums2.length) {
+            return findMediumOfTwoSortedArray(nums2, nums1);
+        }
+        
+        int totalLength = nums1.length + nums2.length;
+        boolean isTotalLengthEven = totalLength % 2 == 0;
+
+        if (nums1.length == 0 && nums2.length != 0) {
+            return isTotalLengthEven ? (double) (nums2[nums2.length / 2 - 1] + nums2[nums2.length / 2]) / 2 : nums2[nums2.length / 2];         
+        }
+
+        int partitionX = nums1.length == 1 ? 1 : nums1.length / 2;
+        int partitionY = isTotalLengthEven ? totalLength / 2 - partitionX : (totalLength + 1) / 2 - partitionX;
+        int highP1 = partitionX == 0 ? Integer.MIN_VALUE : nums1[partitionX-1];
+        int highP2 = partitionX == nums1.length ? Integer.MAX_VALUE : nums1[partitionX];
+        int lowP1 = partitionY == 0 ? Integer.MIN_VALUE : nums2[partitionY-1];
+        int lowP2 = partitionY == nums2.length ? Integer.MAX_VALUE : nums2[partitionY];
+
+        while (partitionX >=0 && partitionX <= nums1.length) {
+            highP1 = partitionX == 0 ? Integer.MIN_VALUE : nums1[partitionX-1];
+            highP2 = partitionX == nums1.length ? Integer.MAX_VALUE : nums1[partitionX];
+            lowP1 = partitionY == 0 ? Integer.MIN_VALUE : nums2[partitionY-1];
+            lowP2 = partitionY == nums2.length ? Integer.MAX_VALUE : nums2[partitionY];
+            if (highP1 <= lowP2 && lowP1 <= highP2) {
+                break;
+            } else if (highP1 > lowP2) {
+                partitionX--;
+                partitionY = isTotalLengthEven ? totalLength / 2 - partitionX : (totalLength + 1) / 2 - partitionX;
+            } else {
+                partitionY--;
+                partitionX = isTotalLengthEven ? totalLength / 2 - partitionY : (totalLength + 1) / 2 - partitionY;
+            }
+        }
+        if (isTotalLengthEven) {
+            return (double) (Math.max(highP1, lowP1) + Math.min(highP2, lowP2)) / 2;
+        } else {
+            return Math.max(highP1, lowP1);
+        }
+    }
 }

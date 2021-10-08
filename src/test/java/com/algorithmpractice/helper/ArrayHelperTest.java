@@ -1,9 +1,10 @@
 package com.algorithmpractice.helper;
 
-import static org.junit.Assert.assertArrayEquals;
 import org.junit.Test;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
+
+import static org.junit.Assert.*;
 
 
 public class ArrayHelperTest {
@@ -67,4 +68,77 @@ public class ArrayHelperTest {
         LOG.info("sorted array is {}", actualResult);
         assertArrayEquals("Sorted array is incorrect", expectedSortedArray, actualResult);
     }
+    
+    @Test
+    public void testFindMedianOfTwoSortedArray1() {
+        int[] inputArray1 = {23,26,31,35};
+        int[] inputArray2 = {3,5,7,9,11,16};
+        double medianOutput = ArrayHelper.findMediumOfTwoSortedArray(inputArray1, inputArray2);
+        LOG.info("Median calculated is {}", medianOutput);
+        assertEquals("Median calculated is incorrect", 13.5, medianOutput, 0.0);
+    }
+
+    @Test
+    public void testFindMedianOfTwoSortedArray2() {
+        int[] inputArray1 = {1,3,8,9,15};
+        int[] inputArray2 = {7,11,18,19,21,25};
+        double medianOutput = ArrayHelper.findMediumOfTwoSortedArray(inputArray1, inputArray2);
+        LOG.info("Median calculated is {}", medianOutput);
+        assertEquals("Median calculated is incorrect", 11, medianOutput, 0.0);
+    }
+
+    @Test
+    public void testFindMedianOfTwoSortedArray3() {
+        int[] inputArray1 = {};
+        int[] inputArray2 = {1};
+        double medianOutput = ArrayHelper.findMediumOfTwoSortedArray(inputArray1, inputArray2);
+        LOG.info("Median calculated is {}", medianOutput);
+        assertEquals("Median calculated is incorrect", 1, medianOutput, 0.0);
+    }
+
+    @Test
+    public void testFindMedianOfTwoSortedArray4() {
+        int[] inputArray1 = {1,2};
+        int[] inputArray2 = {3,4};
+        double medianOutput = ArrayHelper.findMediumOfTwoSortedArray(inputArray1, inputArray2);
+        LOG.info("Median calculated is {}", medianOutput);
+        assertEquals("Median calculated is incorrect", 2.5, medianOutput, 0.0);
+    }
+
+    @Test
+    public void testFindMedianOfTwoSortedArray5() {
+        int[] inputArray1 = {0,0};
+        int[] inputArray2 = {0,0};
+        double medianOutput = ArrayHelper.findMediumOfTwoSortedArray(inputArray1, inputArray2);
+        LOG.info("Median calculated is {}", medianOutput);
+        assertEquals("Median calculated is incorrect", 0, medianOutput, 0.0);
+    }
+
+    @Test
+    public void testFindMedianOfTwoSortedArray6() {
+        int[] inputArray1 = {1,3};
+        int[] inputArray2 = {2};
+        double medianOutput = ArrayHelper.findMediumOfTwoSortedArray(inputArray1, inputArray2);
+        LOG.info("Median calculated is {}", medianOutput);
+        assertEquals("Median calculated is incorrect", 2, medianOutput, 0.0);
+    }
+
+    @Test
+    public void testFindMedianOfTwoSortedArray7() {
+        int[] inputArray1 = {};
+        int[] inputArray2 = {2,3};
+        double medianOutput = ArrayHelper.findMediumOfTwoSortedArray(inputArray1, inputArray2);
+        LOG.info("Median calculated is {}", medianOutput);
+        assertEquals("Median calculated is incorrect", 2.5, medianOutput, 0.0);
+    }
+
+    @Test
+    public void testFindMedianOfTwoSortedArray8() {
+        int[] inputArray1 = {3};
+        int[] inputArray2 = {-2,-1};
+        double medianOutput = ArrayHelper.findMediumOfTwoSortedArray(inputArray1, inputArray2);
+        LOG.info("Median calculated is {}", medianOutput);
+        assertEquals("Median calculated is incorrect", -1, medianOutput, 0.0);
+    }
+    
 }
