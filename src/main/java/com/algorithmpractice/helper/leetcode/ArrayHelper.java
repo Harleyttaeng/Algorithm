@@ -1,4 +1,4 @@
-package com.algorithmpractice.helper;
+package com.algorithmpractice.helper.leetcode;
 
 import java.util.Arrays;
 

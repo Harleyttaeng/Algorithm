@@ -1,9 +1,9 @@
 package com.algorithmpractice.model;
 
 public class TreeNode {
-    private Integer value;
-    private TreeNode left;
-    private TreeNode right;
+    Integer value;
+    TreeNode left;
+    TreeNode right;
     
     public TreeNode(Integer value) {
         this.value = value;

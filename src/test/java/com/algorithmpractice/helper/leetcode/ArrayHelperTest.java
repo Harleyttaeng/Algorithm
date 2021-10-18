@@ -1,4 +1,4 @@
-package com.algorithmpractice.helper;
+package com.algorithmpractice.helper.leetcode;
 
 import org.junit.Test;
 import org.slf4j.Logger;
