@@ -59,7 +59,6 @@ public class ArrayHelperTest {
         assertArrayEquals("Sorted array is incorrect", expectedResult, ArrayHelper.combineTwoSortedArray(arr1,arr2));
     }
     
-    
     @Test
     public void testMergeSort() {
         int[] inputArray = {38,27,43,3,9,82,10};

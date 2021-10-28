@@ -3,6 +3,11 @@ package com.algorithmpractice.helper.leetcode;
 import org.junit.Assert;
 import org.junit.Test;
 
+import java.util.ArrayList;
+import java.util.Arrays;
+import java.util.List;
+import java.util.stream.Collectors;
+
 public class IntegerHelperTest {
     @Test
     public void testReverseInteger1() {
@@ -63,5 +68,35 @@ public class IntegerHelperTest {
     @Test
     public void testIsPalindrome5() {
         Assert.assertTrue("Failed to determine if palindrome", IntegerHelper.isPalindrome(1));
+    }
+    
+    @Test
+    public void test3Sum1() {
+        int[] testInput = {-1,0,1,2,-1,-4};
+        int[] expectedOutputEle1 = {-1,-1,2};
+        int[] expectedOutputEle2 = {-1,0,1};
+        
+        List<List<Integer>> expectedOutput = new ArrayList<>();
+        expectedOutput.add(Arrays.stream(expectedOutputEle1).boxed().collect(Collectors.toList()));
+        expectedOutput.add(Arrays.stream(expectedOutputEle2).boxed().collect(Collectors.toList()));
+        Assert.assertEquals("Failed to generate 3 Sum", expectedOutput, IntegerHelper.threeSum(testInput));
+    }
+
+    @Test
+    public void test3Sum2() {
+        int[] testInput = {0,0,0};
+        int[] expectedOutputEle1 = {0,0,0};
+        List<List<Integer>> expectedOutput = new ArrayList<>();
+        expectedOutput.add(Arrays.stream(expectedOutputEle1).boxed().collect(Collectors.toList()));
+        Assert.assertEquals("Failed to generate 3 Sum", expectedOutput, IntegerHelper.threeSum(testInput));
+    }
+
+    @Test
+    public void test3Sum3() {
+        int[] testInput = {0,0,0,0};
+        int[] expectedOutputEle1 = {0,0,0};
+        List<List<Integer>> expectedOutput = new ArrayList<>();
+        expectedOutput.add(Arrays.stream(expectedOutputEle1).boxed().collect(Collectors.toList()));
+        Assert.assertEquals("Failed to generate 3 Sum", expectedOutput, IntegerHelper.threeSum(testInput));
     }
 }

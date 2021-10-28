@@ -1,5 +1,8 @@
 package com.algorithmpractice.helper.leetcode;
 
+import java.util.*;
+import java.util.stream.Collectors;
+
 public class IntegerHelper {
     /**
      * 7. Reverse Integer
@@ -51,5 +54,53 @@ public class IntegerHelper {
         }
         return x == result;
     }
-    
+
+    /**
+     * 15. 3Sum
+     * -
+     * Given an integer array nums, return all the triplets [nums[i], nums[j], nums[k]] such that i != j, i != k, and j != k, and nums[i] + nums[j] + nums[k] == 0.
+     *
+     * Notice that the solution set must not contain duplicate triplets.
+     */
+    public static List<List<Integer>> threeSum(int[] nums) {
+        int pA;
+        
+        int lo;
+        int hi;
+        int sumAux;
+        
+        List<List<Integer>> output = new ArrayList<>();
+        
+        Arrays.sort(nums);
+        int inputLength = nums.length;
+        
+        for (int i = 0; i < inputLength-2; i++){
+            pA = nums[i];
+            if (i > 0 && pA == nums[i-1]) {
+                continue;
+            }
+            int target = - pA;
+            lo = i + 1;
+            hi = inputLength - 1;
+            while (lo < hi) {
+                sumAux = nums[lo] + nums[hi];
+                if (sumAux > target) {
+                    hi--;
+                } else if (sumAux < target) {
+                    lo++;
+                } else {
+                    if (nums[lo] == nums[lo-1] && hi <inputLength-1 && nums[hi] == nums[hi+1]) {
+                        lo++;
+                        hi--;
+                        continue;
+                    }
+                    output.add(Arrays.asList(pA,nums[lo], nums[hi]));
+                    lo++;
+                    hi--;
+                }
+            }
+            
+        }
+        return output;
+    }
 }
