@@ -116,4 +116,31 @@ public class ArrayHelper {
             return Math.max(highP1, lowP1);
         }
     }
+
+    /**
+     * 238. Product of Array Except Self
+     * Given an integer array nums, return an array answer such that answer[i] is equal to the product of all the elements of nums except nums[i].
+     * The product of any prefix or suffix of nums is guaranteed to fit in a 32-bit integer.
+     *
+     * You must write an algorithm that runs in O(n) time and without using the division operation.
+     * @return product of input array except self
+     */
+    public static int[] productExceptSelf(int[] nums) {
+        int length = nums.length;
+        int[] numAuxLeft = new int[length];
+        int[] numAuxRight = new int[length];
+        int[] result = new int[length];
+        
+        for (int i = 0; i <= length - 1; i++) {
+            numAuxLeft[i] = i == 0 ? 1 : nums[i-1] * numAuxLeft[i-1]; 
+        }
+        for (int k = length - 1; k >= 0; k--) {
+            numAuxRight[k] = k == length - 1 ? 1 : nums[k+1] * numAuxRight[k+1];
+        }
+        
+        for (int j = 0; j <= length - 1; j++) {
+            result[j] = numAuxLeft[j] * numAuxRight[j];
+        }
+        return result;
+    }
 }
