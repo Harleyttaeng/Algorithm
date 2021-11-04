@@ -77,7 +77,7 @@ public class ArrayHelperTest {
         int[] inputArray2 = {3,5,7,9,11,16};
         double medianOutput = ArrayHelper.findMediumOfTwoSortedArray(inputArray1, inputArray2);
         LOG.info("Median calculated is {}", medianOutput);
-        assertEquals(COMBINED_SORTED_ARRAY_MSG, 13.5, medianOutput, 0.0);
+        assertEquals(MEDIAN_TWO_SORTED_ARRAY_MSG, 13.5, medianOutput, 0.0);
     }
 
     @Test
@@ -86,7 +86,7 @@ public class ArrayHelperTest {
         int[] inputArray2 = {7,11,18,19,21,25};
         double medianOutput = ArrayHelper.findMediumOfTwoSortedArray(inputArray1, inputArray2);
         LOG.info("Median calculated is {}", medianOutput);
-        assertEquals(COMBINED_SORTED_ARRAY_MSG, 11, medianOutput, 0.0);
+        assertEquals(MEDIAN_TWO_SORTED_ARRAY_MSG, 11, medianOutput, 0.0);
     }
 
     @Test
@@ -95,7 +95,7 @@ public class ArrayHelperTest {
         int[] inputArray2 = {1};
         double medianOutput = ArrayHelper.findMediumOfTwoSortedArray(inputArray1, inputArray2);
         LOG.info("Median calculated is {}", medianOutput);
-        assertEquals(COMBINED_SORTED_ARRAY_MSG, 1, medianOutput, 0.0);
+        assertEquals(MEDIAN_TWO_SORTED_ARRAY_MSG, 1, medianOutput, 0.0);
     }
 
     @Test
@@ -104,7 +104,7 @@ public class ArrayHelperTest {
         int[] inputArray2 = {3,4};
         double medianOutput = ArrayHelper.findMediumOfTwoSortedArray(inputArray1, inputArray2);
         LOG.info("Median calculated is {}", medianOutput);
-        assertEquals(COMBINED_SORTED_ARRAY_MSG, 2.5, medianOutput, 0.0);
+        assertEquals(MEDIAN_TWO_SORTED_ARRAY_MSG, 2.5, medianOutput, 0.0);
     }
 
     @Test
@@ -113,7 +113,7 @@ public class ArrayHelperTest {
         int[] inputArray2 = {0,0};
         double medianOutput = ArrayHelper.findMediumOfTwoSortedArray(inputArray1, inputArray2);
         LOG.info("Median calculated is {}", medianOutput);
-        assertEquals(COMBINED_SORTED_ARRAY_MSG, 0, medianOutput, 0.0);
+        assertEquals(MEDIAN_TWO_SORTED_ARRAY_MSG, 0, medianOutput, 0.0);
     }
 
     @Test
@@ -122,7 +122,7 @@ public class ArrayHelperTest {
         int[] inputArray2 = {2};
         double medianOutput = ArrayHelper.findMediumOfTwoSortedArray(inputArray1, inputArray2);
         LOG.info("Median calculated is {}", medianOutput);
-        assertEquals(COMBINED_SORTED_ARRAY_MSG, 2, medianOutput, 0.0);
+        assertEquals(MEDIAN_TWO_SORTED_ARRAY_MSG, 2, medianOutput, 0.0);
     }
 
     @Test
@@ -131,7 +131,7 @@ public class ArrayHelperTest {
         int[] inputArray2 = {2,3};
         double medianOutput = ArrayHelper.findMediumOfTwoSortedArray(inputArray1, inputArray2);
         LOG.info("Median calculated is {}", medianOutput);
-        assertEquals(COMBINED_SORTED_ARRAY_MSG, 2.5, medianOutput, 0.0);
+        assertEquals(MEDIAN_TWO_SORTED_ARRAY_MSG, 2.5, medianOutput, 0.0);
     }
 
     @Test
@@ -140,7 +140,7 @@ public class ArrayHelperTest {
         int[] inputArray2 = {-2,-1};
         double medianOutput = ArrayHelper.findMediumOfTwoSortedArray(inputArray1, inputArray2);
         LOG.info("Median calculated is {}", medianOutput);
-        assertEquals(COMBINED_SORTED_ARRAY_MSG, -1, medianOutput, 0.0);
+        assertEquals(MEDIAN_TWO_SORTED_ARRAY_MSG, -1, medianOutput, 0.0);
     }
     
     @Test
