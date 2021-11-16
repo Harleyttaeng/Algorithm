@@ -118,6 +118,64 @@ public class ArrayHelper {
     }
 
     /**
+     * 11. Container With Most Water
+     * Given n non-negative integers a1, a2, ..., an , where each represents a point at coordinate (i, ai). n vertical lines are drawn such that the two endpoints of the line i is at (i, ai) and (i, 0). Find two lines, which, together with the x-axis forms a container, such that the container contains the most water.
+     *
+     * Notice that you may not slant the container.
+     */
+    public static int maxAreaWaterContainer(int[] height) {
+        int length = height.length;
+        int pA = 0, pB = length - 1;
+        int borderLeft = height[0], borderRight = height[length-1];
+        int maxArea = Math.min(height[pA],height[pB]) * (pB-pA), maxAreaAux;
+
+        while (pA < pB) {
+            if (borderLeft < borderRight) {
+                pA++;
+                if (height[pA] > borderLeft) {
+                    borderLeft=height[pA];
+                    maxAreaAux = Math.min(height[pA],height[pB]) * (pB-pA);
+                    maxArea = Math.max(maxArea, maxAreaAux);
+                }
+            } else {
+                pB--;
+                if (height[pB] > borderRight) {
+                    borderRight=height[pB];
+                    maxAreaAux = Math.min(height[pA],height[pB]) * (pB-pA);
+                    maxArea = Math.max(maxArea, maxAreaAux);
+                }
+            }
+        }
+        return maxArea;
+    }
+
+    /**
+     * 152. Maximum Product Subarray
+     * Given an integer array nums, find a contiguous non-empty subarray within the array that has the largest product, and return the product.
+     *
+     * It is guaranteed that the answer will fit in a 32-bit integer.
+     *
+     * A subarray is a contiguous subsequence of the array.
+     */
+    public static int maxProduct(int[] nums) {
+        int maxValue = nums[0];
+        int auxMin = 1, auxMax = 1;
+        int tmp;
+
+        for (int num: nums) {
+            if (num == 0) {
+                auxMin = 1;
+                auxMax = 1;
+            }
+            tmp = num * auxMax;
+            auxMax = Math.max(num * auxMax, Math.max(num * auxMin, num));
+            auxMin = Math.min(tmp, Math.min(num * auxMin, num));
+            maxValue = Math.max(maxValue, auxMax);
+        }
+        return maxValue;
+    }
+
+    /**
      * 238. Product of Array Except Self
      * Given an integer array nums, return an array answer such that answer[i] is equal to the product of all the elements of nums except nums[i].
      * The product of any prefix or suffix of nums is guaranteed to fit in a 32-bit integer.

@@ -149,5 +149,28 @@ public class ArrayHelperTest {
         int[] expectedOutput = {24,12,8,6};
         assertArrayEquals("Expected output is incorrect", expectedOutput, ArrayHelper.productExceptSelf(inputArray));
     }
-    
+
+    @Test
+    public void testMaxProductSubarray() {
+        int[] inputArray = {2,3,-2,4};
+        assertEquals("Expected output is incorrect", 6, ArrayHelper.maxProduct(inputArray));
+    }
+
+    @Test
+    public void testMaxWaterContainerArea() {
+        int[] inputArray = {1,8,6,2,5,4,8,3,7};
+        assertEquals("Expected output is wrong",49,ArrayHelper.maxAreaWaterContainer(inputArray));
+    }
+
+    @Test
+    public void testMaxWaterContainerArea2() {
+        int[] inputArray = {4,3,2,1,4};
+        assertEquals("Expected output is wrong",16,ArrayHelper.maxAreaWaterContainer(inputArray));
+    }
+
+    @Test
+    public void testMaxWaterContainerArea3() {
+        int[] inputArray = {1,8,100,2,100,4,8,3,7};
+        assertEquals("Expected output is wrong",200,ArrayHelper.maxAreaWaterContainer(inputArray));
+    }
 }
