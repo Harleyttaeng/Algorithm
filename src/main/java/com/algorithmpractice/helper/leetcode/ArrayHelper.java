@@ -1,6 +1,6 @@
 package com.algorithmpractice.helper.leetcode;
 
-import java.util.Arrays;
+import java.util.*;
 
 public class ArrayHelper {
 
@@ -200,5 +200,37 @@ public class ArrayHelper {
             result[j] = numAuxLeft[j] * numAuxRight[j];
         }
         return result;
+    }
+
+    /**
+     * 322. Coin Change
+     * You are given an integer array coins representing coins of different denominations and an integer amount representing a total amount of money.
+     *
+     * Return the fewest number of coins that you need to make up that amount. If that amount of money cannot be made up by any combination of the coins, return -1.
+     * You may assume that you have an infinite number of each kind of coin.
+     * @param coins
+     * @param amount
+     * @return the fewest number of coins that you need to make up that amount
+     */
+    public static int coinChange(int[] coins, int amount) {
+        if (amount==0) return 0;
+        Map<Integer, Integer> recordedResults = new HashMap<>();
+        int minNumCoinsAux;
+
+        for (int val = 0;val <= amount; val++) {
+            minNumCoinsAux = Integer.MAX_VALUE;
+            for (int coin : coins) {
+                if (val == coin) {
+                    recordedResults.put(val,1);
+                    break;
+                } else if (val > coin) {
+                    if (recordedResults.containsKey(val - coin)) {
+                        minNumCoinsAux = Math.min(1 + recordedResults.get(val - coin), minNumCoinsAux);
+                        recordedResults.put(val,minNumCoinsAux);
+                    }
+                }
+            }
+        }
+        return recordedResults.getOrDefault(amount, -1);
     }
 }

@@ -171,6 +171,56 @@ public class ArrayHelperTest {
     @Test
     public void testMaxWaterContainerArea3() {
         int[] inputArray = {1,8,100,2,100,4,8,3,7};
+        System.out.println(IntegerHelper.convertHexToBinary1Counter(5));
         assertEquals("Expected output is wrong",200,ArrayHelper.maxAreaWaterContainer(inputArray));
+    }
+
+    @Test
+    public void testCoinChange1() {
+        int[] coins = {1,2,5};
+        int amount = 11;
+        assertEquals("Expected minimum number of coins required is incorrect", 3, ArrayHelper.coinChange(coins,amount));
+    }
+
+    @Test
+    public void testCoinChange2() {
+        int[] coins = {1,2,4};
+        int amount = 11;
+        assertEquals("Expected minimum number of coins required is incorrect", 4, ArrayHelper.coinChange(coins,amount));
+    }
+
+    @Test
+    public void testCoinChange3() {
+        int[] coins = {1,2,10};
+        int amount = 27;
+        assertEquals("Expected minimum number of coins required is incorrect", 6, ArrayHelper.coinChange(coins,amount));
+    }
+
+    @Test
+    public void testCoinChange4() {
+        int[] coins = {1};
+        int amount = 1;
+        assertEquals("Expected minimum number of coins required is incorrect", 1, ArrayHelper.coinChange(coins,amount));
+    }
+
+    @Test
+    public void testCoinChange5() {
+        int[] coins = {2,5,10,1};
+        int amount = 27;
+        assertEquals("Expected minimum number of coins required is incorrect", 4, ArrayHelper.coinChange(coins,amount));
+    }
+
+    @Test
+    public void testCoinChange6() {
+        int[] coins = {186,419,83,408};
+        int amount = 6249;
+        assertEquals("Expected minimum number of coins required is incorrect", 20, ArrayHelper.coinChange(coins,amount));
+    }
+
+    @Test
+    public void testCoinChange7() {
+        int[] coins = {474,83,404,3};
+        int amount = 264;
+        assertEquals("Expected minimum number of coins required is incorrect", 8, ArrayHelper.coinChange(coins,amount));
     }
 }
