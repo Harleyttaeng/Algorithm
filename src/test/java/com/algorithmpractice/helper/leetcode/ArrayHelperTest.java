@@ -223,4 +223,16 @@ public class ArrayHelperTest {
         int amount = 264;
         assertEquals("Expected minimum number of coins required is incorrect", 8, ArrayHelper.coinChange(coins,amount));
     }
+
+    @Test
+    public void  tesLengthOfLTS1() {
+        int[] inputArray = {1,2,4,3};
+        assertEquals("Expected longest LTS is incorrect", 3, ArrayHelper.lengthOfLIS(inputArray));
+    }
+
+    @Test
+    public void  tesLengthOfLTS2() {
+        int[] inputArray = {10,9,2,5,3,7,101,18};
+        assertEquals("Expected longest LTS is incorrect", 4, ArrayHelper.lengthOfLIS(inputArray));
+    }
 }
