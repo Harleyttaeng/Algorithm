@@ -130,5 +130,32 @@ public class StringHelperTest {
         String regexPattern = ".*..a*";
         Assert.assertFalse("Failed to judge if string matches regex", StringHelper.isMatch(inputString, regexPattern));
     }
-    
+
+    @Test
+    public void testLongestCommonSubsequence1() {
+        String text1 = "ace";
+        String text2 = "abcde";
+        Assert.assertEquals("Failed to calculate longest common subsequence", 3, StringHelper.longestCommonSubsequence(text1, text2));
+    }
+
+    @Test
+    public void testLongestCommonSubsequence2() {
+        String text1 = "abc";
+        String text2 = "def";
+        Assert.assertEquals("Failed to calculate longest common subsequence", 0, StringHelper.longestCommonSubsequence(text1, text2));
+    }
+
+    @Test
+    public void testLongestCommonSubsequence3() {
+        String text1 = "bsbininm";
+        String text2 = "jmjkbkjkv";
+        Assert.assertEquals("Failed to calculate longest common subsequence", 1, StringHelper.longestCommonSubsequence(text1, text2));
+    }
+
+    @Test
+    public void testLongestCommonSubsequence4() {
+        String text1 = "oxcpqrsvwf";
+        String text2 = "shmtulqrypy";
+        Assert.assertEquals("Failed to calculate longest common subsequence", 2, StringHelper.longestCommonSubsequence(text1, text2));
+    }
 }

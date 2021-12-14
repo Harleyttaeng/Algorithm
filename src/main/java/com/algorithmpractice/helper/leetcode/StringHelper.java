@@ -1,5 +1,7 @@
 package com.algorithmpractice.helper.leetcode;
 
+import java.util.Arrays;
+
 public class StringHelper {
 
     public static boolean isCharAMatch(char s, char p) {
@@ -55,5 +57,55 @@ public class StringHelper {
             }
         }
         return dpMatrix[s.length()-1][p.length()-1];
+    }
+
+    /**
+     * 1143. Longest Common Subsequence
+     *
+     * Given two strings text1 and text2, return the length of their longest common subsequence. If there is no common subsequence, return 0.
+     *
+     * A subsequence of a string is a new string generated from the original string with some characters (can be none) deleted without changing the relative order of the remaining characters.
+     *
+     * For example, "ace" is a subsequence of "abcde".
+     * A common subsequence of two strings is a subsequence that is common to both strings.
+     */
+    public static int longestCommonSubsequence(String text1, String text2) {
+        Integer[][] dpMatrix = new Integer[text2.length()][text1.length()];
+        int indexCheckRow = text1.indexOf(text2.charAt(0));
+        int indexCheckColumn = text2.indexOf(text1.charAt(0));
+
+        if (indexCheckRow == -1) {
+            Arrays.fill(dpMatrix[0],0);
+        } else {
+            for (int i = 0; i < indexCheckRow; i++) {
+                dpMatrix[0][i] = 0;
+            }
+            for (int j = indexCheckRow; j <= text1.length()-1; j++) {
+                dpMatrix[0][j] = 1;
+            }
+        }
+        if (indexCheckColumn == -1) {
+            for (Integer[] ele: dpMatrix) {
+                ele[0] = 0;
+            }
+        } else {
+            for (int i = 0; i < indexCheckColumn; i++) {
+                dpMatrix[i][0] = 0;
+            }
+            for (int j = indexCheckColumn; j <= text2.length()-1; j++) {
+                dpMatrix[j][0] = 1;
+            }
+        }
+
+        for (int i = 1; i <= text2.length() - 1; i++) {
+            for (int j = 1; j <= text1.length() - 1; j++) {
+                if (text2.charAt(i) != text1.charAt(j)) {
+                    dpMatrix[i][j] = Math.max(dpMatrix[i][j-1], dpMatrix[i-1][j]);
+                } else {
+                    dpMatrix[i][j] = 1 + dpMatrix[i-1][j-1];
+                }
+            }
+        }
+        return dpMatrix[text2.length()-1][text1.length()-1];
     }
 }
