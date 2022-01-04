@@ -3,6 +3,9 @@ package com.algorithmpractice.helper.leetcode;
 import org.junit.Assert;
 import org.junit.Test;
 
+import java.util.ArrayList;
+import java.util.List;
+
 public class StringHelperTest {
     @Test
     public void testRegexPatternMatching1() {
@@ -157,5 +160,23 @@ public class StringHelperTest {
         String text1 = "oxcpqrsvwf";
         String text2 = "shmtulqrypy";
         Assert.assertEquals("Failed to calculate longest common subsequence", 2, StringHelper.longestCommonSubsequence(text1, text2));
+    }
+
+    @Test
+    public void testWordBreak1() {
+        String s = "NeetCode";
+        List<String> wordDict = new ArrayList<>();
+        wordDict.add("Neet");
+        wordDict.add("Code");
+        Assert.assertTrue("Failed to assess if word is breakable", StringHelper.wordBreak(s, wordDict));
+    }
+
+    @Test
+    public void testWordBreak2() {
+        String s = "aaaaaaa";
+        List<String> wordDict = new ArrayList<>();
+        wordDict.add("aaaa");
+        wordDict.add("aaa");
+        Assert.assertTrue("Failed to assess if word is breakable", StringHelper.wordBreak(s, wordDict));
     }
 }

@@ -1,6 +1,8 @@
 package com.algorithmpractice.helper.leetcode;
 
 import java.util.Arrays;
+import java.util.HashSet;
+import java.util.List;
 
 public class StringHelper {
 
@@ -57,6 +59,33 @@ public class StringHelper {
             }
         }
         return dpMatrix[s.length()-1][p.length()-1];
+    }
+
+    /**
+     * 139. Word Break
+     *
+     * Given a string s and a dictionary of strings wordDict, return true if s can be segmented into a space-separated sequence of one or more dictionary words.
+     *
+     * Note that the same word in the dictionary may be reused multiple times in the segmentation.
+     *
+     */
+    public static boolean wordBreak(String s, List<String> wordDict) {
+        int sLength = s.length();
+        HashSet<String> wordDictSet = new HashSet<>(wordDict);
+        Boolean[] indexVisitRecord = new Boolean[sLength + 1];
+        Arrays.fill(indexVisitRecord, false);
+        indexVisitRecord[sLength] = true;
+
+        for (int i = sLength - 1; i >= 0; i--) {
+            for (int j = sLength; i < j; j--) {
+                if (indexVisitRecord[j] && wordDictSet.contains(s.substring(i, j))) {
+                    indexVisitRecord[i] = true;
+                    break;
+                }
+            }
+
+        }
+        return indexVisitRecord[0];
     }
 
     /**
