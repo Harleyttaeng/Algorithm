@@ -176,6 +176,31 @@ public class ArrayHelper {
     }
 
     /**
+     * 198. House Robber
+     * Medium
+     * You are a professional robber planning to rob houses along a street. Each house has a certain amount of money stashed, the only constraint stopping you from robbing each of them is that adjacent houses have security systems connected and it will automatically contact the police if two adjacent houses were broken into on the same night.
+     * Given an integer array nums representing the amount of money of each house, return the maximum amount of money you can rob tonight without alerting the police.
+     */
+    public static int rob(int[] nums){
+        int size = nums.length;
+        int[] storedMaxVal = new int[size];
+        int maxAmount = nums[0];
+
+        for (int i = 0;i <= size - 1; i++) {
+            if (i == 0) {
+                storedMaxVal[i] = maxAmount;
+                continue;
+            } else if (i == 1) {
+                maxAmount = Math.max(maxAmount, nums[1]);
+            } else {
+                maxAmount = Math.max(maxAmount, nums[i] + storedMaxVal[i-2]);
+            }
+            storedMaxVal[i] = maxAmount;
+        }
+        return maxAmount;
+    }
+
+    /**
      * 238. Product of Array Except Self
      * Given an integer array nums, return an array answer such that answer[i] is equal to the product of all the elements of nums except nums[i].
      * The product of any prefix or suffix of nums is guaranteed to fit in a 32-bit integer.

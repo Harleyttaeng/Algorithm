@@ -235,4 +235,16 @@ public class ArrayHelperTest {
         int[] inputArray = {10,9,2,5,3,7,101,18};
         assertEquals("Expected longest LTS is incorrect", 4, ArrayHelper.lengthOfLIS(inputArray));
     }
+
+    @Test
+    public void testRob1() {
+        int[] inputArray = {1,2,3,1};
+        assertEquals("Expected max money that can be robbed", 4, ArrayHelper.rob(inputArray));
+    }
+
+    @Test
+    public void testRob2() {
+        int[] inputArray = {2,7,9,3,1};
+        assertEquals("Expected max money that can be robbed", 12, ArrayHelper.rob(inputArray));
+    }
 }
