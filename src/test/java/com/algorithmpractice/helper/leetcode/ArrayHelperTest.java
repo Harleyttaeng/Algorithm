@@ -247,4 +247,40 @@ public class ArrayHelperTest {
         int[] inputArray = {2,7,9,3,1};
         assertEquals("Expected max money that can be robbed", 12, ArrayHelper.rob(inputArray));
     }
+
+    @Test
+    public void testRobII1() {
+        int[] inputArray = {2,3,2};
+        assertEquals("Expected max money that can be robbed", 3, ArrayHelper.robII(inputArray));
+    }
+
+    @Test
+    public void testRobII2() {
+        int[] inputArray = {1,2,3,1};
+        assertEquals("Expected max money that can be robbed", 4, ArrayHelper.robII(inputArray));
+    }
+
+    @Test
+    public void testRobII3() {
+        int[] inputArray = {1,2,3,2,2};
+        assertEquals("Expected max money that can be robbed", 5, ArrayHelper.robII(inputArray));
+    }
+
+    @Test
+    public void testRobII4() {
+        int[] inputArray = {2,1,1,2};
+        assertEquals("Expected max money that can be robbed", 3, ArrayHelper.robII(inputArray));
+    }
+
+    @Test
+    public void testRobII5() {
+        int[] inputArray = {1,1,1,2};
+        assertEquals("Expected max money that can be robbed", 3, ArrayHelper.robII(inputArray));
+    }
+
+    @Test
+    public void testRobII6() {
+        int[] inputArray = {2,2,4,3,2,5};
+        assertEquals("Expected max money that can be robbed", 10, ArrayHelper.robII(inputArray));
+    }
 }
