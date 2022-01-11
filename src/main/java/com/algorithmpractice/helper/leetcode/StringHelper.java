@@ -1,8 +1,6 @@
 package com.algorithmpractice.helper.leetcode;
 
-import java.util.Arrays;
-import java.util.HashSet;
-import java.util.List;
+import java.util.*;
 
 public class StringHelper {
 
@@ -10,6 +8,7 @@ public class StringHelper {
         char wildCardChar = '.';
         return s == p || p == wildCardChar; 
     }
+
     /**
      * 10. Regular Expression Matching
      * Given an input string s and a pattern p, implement regular expression matching with support for '.' and '*' where:
@@ -59,6 +58,52 @@ public class StringHelper {
             }
         }
         return dpMatrix[s.length()-1][p.length()-1];
+    }
+
+    /**
+     * 91. Decode Ways
+     * A message containing letters from A-Z can be encoded into numbers using the following mapping:
+     *
+     * 'A' -> "1"
+     * 'B' -> "2"
+     * ...
+     * 'Z' -> "26"
+     * To decode an encoded message, all the digits must be grouped then mapped back into letters using the reverse of the mapping above (there may be multiple ways). For example, "11106" can be mapped into:
+     *
+     * "AAJF" with the grouping (1 1 10 6)
+     * "KJF" with the grouping (11 10 6)
+     * Note that the grouping (1 11 06) is invalid because "06" cannot be mapped into 'F' since "6" is different from "06".
+     *
+     * Given a string s containing only digits, return the number of ways to decode it.
+     *
+     * The test cases are generated so that the answer fits in a 32-bit integer.
+     *
+     * @param s input string
+     * @return number of ways input string can be decoded
+     */
+    public static int numDecodings(String s) {
+        if (String.valueOf(s.charAt(0)).equals("0")) {
+            return 0;
+        }
+        int length = s.length();
+        int[] maxNumberEncodingRecords = new int[length];
+        maxNumberEncodingRecords[0] = 1;
+        Set<String> encodingMap = new HashSet<>();
+        for (int i = 0; i <= 25; i++) {
+            encodingMap.add(String.valueOf(i + 1));
+        }
+
+        for (int j = 1; j <= length - 1; j++) {
+            String currentDigit = String.valueOf(s.charAt(j));
+            if (currentDigit.equals("0") && encodingMap.contains(s.charAt(j - 1) + currentDigit)) {
+                maxNumberEncodingRecords[j] = j == 1 ? 1 : maxNumberEncodingRecords[j-2];
+            } else if (!currentDigit.equals("0")) {
+                maxNumberEncodingRecords[j] = j == 1 ? (encodingMap.contains(s.charAt(0) + currentDigit) ? 2 : 1) : (encodingMap.contains(s.charAt(j - 1) + currentDigit) ? maxNumberEncodingRecords[j-1] + maxNumberEncodingRecords[j-2] : maxNumberEncodingRecords[j-1]);
+            } else {
+                return 0;
+            }
+        }
+        return maxNumberEncodingRecords[length-1];
     }
 
     /**

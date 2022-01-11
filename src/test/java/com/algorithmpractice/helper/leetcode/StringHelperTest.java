@@ -179,4 +179,46 @@ public class StringHelperTest {
         wordDict.add("aaa");
         Assert.assertTrue("Failed to assess if word is breakable", StringHelper.wordBreak(s, wordDict));
     }
+
+    @Test
+    public void testNumDecodings1() {
+        String s = "226";
+        Assert.assertEquals("Failed to calculate number of ways of decoding", 3, StringHelper.numDecodings(s));
+    }
+
+    @Test
+    public void testNumDecodings2() {
+        String s = "06";
+        Assert.assertEquals("Failed to calculate number of ways of decoding", 0, StringHelper.numDecodings(s));
+    }
+
+    @Test
+    public void testNumDecodings3() {
+        String s = "10";
+        Assert.assertEquals("Failed to calculate number of ways of decoding", 1, StringHelper.numDecodings(s));
+    }
+
+    @Test
+    public void testNumDecodings4() {
+        String s = "2101";
+        Assert.assertEquals("Failed to calculate number of ways of decoding", 1, StringHelper.numDecodings(s));
+    }
+
+    @Test
+    public void testNumDecodings5() {
+        String s = "1123";
+        Assert.assertEquals("Failed to calculate number of ways of decoding", 5, StringHelper.numDecodings(s));
+    }
+
+    @Test
+    public void testNumDecodings6() {
+        String s = "27";
+        Assert.assertEquals("Failed to calculate number of ways of decoding", 1, StringHelper.numDecodings(s));
+    }
+
+    @Test
+    public void testNumDecodings7() {
+        String s = "1201234";
+        Assert.assertEquals("Failed to calculate number of ways of decoding", 3, StringHelper.numDecodings(s));
+    }
 }
