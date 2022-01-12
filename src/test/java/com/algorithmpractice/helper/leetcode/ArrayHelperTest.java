@@ -283,4 +283,40 @@ public class ArrayHelperTest {
         int[] inputArray = {2,2,4,3,2,5};
         assertEquals("Expected max money that can be robbed", 10, ArrayHelper.robII(inputArray));
     }
+
+    @Test
+    public void testCanJump1() {
+        int[] inputArray = {2,0,0};
+        assertTrue("Failed to calculate if it can jump", ArrayHelper.canJump(inputArray));
+    }
+
+    @Test
+    public void testCanJump2() {
+        int[] inputArray = {2,3,1,1,4};
+        assertTrue("Failed to calculate if it can jump", ArrayHelper.canJump(inputArray));
+    }
+
+    @Test
+    public void testCanJump3() {
+        int[] inputArray = {3,2,1,0,4};
+        assertFalse("Failed to calculate if it can jump", ArrayHelper.canJump(inputArray));
+    }
+
+    @Test
+    public void testCanJump4() {
+        int[] inputArray = {1,0,0,1,1};
+        assertFalse("Failed to calculate if it can jump", ArrayHelper.canJump(inputArray));
+    }
+
+    @Test
+    public void testCanJump5() {
+        int[] inputArray = {0};
+        assertTrue("Failed to calculate if it can jump", ArrayHelper.canJump(inputArray));
+    }
+
+    @Test
+    public void testCanJump6() {
+        int[] inputArray = {1,2};
+        assertTrue("Failed to calculate if it can jump", ArrayHelper.canJump(inputArray));
+    }
 }

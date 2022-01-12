@@ -150,6 +150,31 @@ public class ArrayHelper {
     }
 
     /**
+     * 55. Jump Game
+     * You are given an integer array nums. You are initially positioned at the array's first index, and each element in the array represents your maximum jump length at that position.
+     *
+     * Return true if you can reach the last index, or false otherwise.
+     */
+    public static boolean canJump(int[] nums) {
+        int numsLength = nums.length;
+        if (numsLength == 1) {
+            return true;
+        }
+        int tmpMaxIndexReachable = 0;
+        for (int i = 0; i <= numsLength - 2; i++) {
+            if (i == 0) {
+                tmpMaxIndexReachable = nums[0];
+            } else {
+                tmpMaxIndexReachable = Math.max(tmpMaxIndexReachable, tmpMaxIndexReachable >= i ?  i + nums[i] : Integer.MIN_VALUE);
+            }
+            if (tmpMaxIndexReachable >= numsLength - 1) {
+                return true;
+            }
+        }
+        return false;
+    }
+
+    /**
      * 152. Maximum Product Subarray
      * Given an integer array nums, find a contiguous non-empty subarray within the array that has the largest product, and return the product.
      *
