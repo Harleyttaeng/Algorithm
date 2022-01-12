@@ -99,4 +99,14 @@ public class IntegerHelperTest {
         expectedOutput.add(Arrays.stream(expectedOutputEle1).boxed().collect(Collectors.toList()));
         Assert.assertEquals("Failed to generate 3 Sum", expectedOutput, IntegerHelper.threeSum(testInput));
     }
+
+    @Test
+    public void testUniquePaths1() {
+        Assert.assertEquals("Failed to calculate total number of unique paths", 28, IntegerHelper.uniquePaths(3,7));
+    }
+
+    @Test
+    public void testUniquePaths2() {
+        Assert.assertEquals("Failed to calculate total number of unique paths", 1, IntegerHelper.uniquePaths(1,1));
+    }
 }
