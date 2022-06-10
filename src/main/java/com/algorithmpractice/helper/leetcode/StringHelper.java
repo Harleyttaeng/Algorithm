@@ -182,4 +182,114 @@ public class StringHelper {
         }
         return dpMatrix[text2.length()-1][text1.length()-1];
     }
+
+    /**
+     *
+     * Given a time in -hour AM/PM format, convert it to military (24-hour) time.
+     *
+     * Note: - 12:00:00AM on a 12-hour clock is 00:00:00 on a 24-hour clock.
+     * - 12:00:00PM on a 12-hour clock is 12:00:00 on a 24-hour clock.
+     *
+     * Example
+     * Return '12:01:00'.
+     * Return '00:01:00'.
+     *
+     * Function Description
+     */
+    public static String timeConversion(String s) {
+        Map<String, String> twelveTo24Map = new HashMap<>();
+        twelveTo24Map.put("12", "00");
+        int twentyFourStartingNumber = 13;
+
+        for (int i = 1; i <= 11; i++) {
+            if (String.valueOf(i).length() == 1) {
+                twelveTo24Map.put("0" + i, String.valueOf(twentyFourStartingNumber));
+            } else {
+                twelveTo24Map.put(String.valueOf(i), String.valueOf(twentyFourStartingNumber));
+            }
+            twentyFourStartingNumber++;
+        }
+
+        if (s.substring(8).equals("PM")) {
+            if (s.startsWith("12")) {
+                return s.substring(0, 8);
+            } else {
+                return twelveTo24Map.get(s.substring(0, 2)) + s.substring(2, 8);
+            }
+        } else {
+            if (s.startsWith("12")) {
+                return "00" + s.substring(2, 8);
+            } else {
+                return s.substring(0, 8);
+            }
+        }
+    }
+
+
+    /*
+     * Complete the 'superDigit' function below.
+     *
+     * The function is expected to return an INTEGER.
+     * The function accepts following parameters:
+     *  1. STRING n
+     *  2. INTEGER k
+     *
+     * For example, the super digit of 9875 will be calculated as:
+        super_digit(9875)   9+8+7+5 = 29
+        super_digit(29) 	2 + 9 = 11
+        super_digit(11)		1 + 1 = 2
+        super_digit(2)		= 2
+     */
+
+    public static int superDigit(String n, int k) {
+        StringBuilder superDigitInput = new StringBuilder();
+        for (int i = 0; i <= k-1; i++) {
+            superDigitInput.append(n);
+        }
+        return superDigitAux(superDigitInput.toString());
+    }
+
+    public static int superDigitAux(String n) {
+        if (n.length() == 1) {
+            return (int) n.charAt(0) - '0';
+        } else {
+            int superDigitResult = 0;
+            for (int i = 0; i <= n.length()-1; i++) {
+                superDigitResult = superDigitResult + (int) n.charAt(i) - '0';
+            }
+            return StringHelper.superDigit(String.valueOf(superDigitResult), 1);
+        }
+    }
+
+    //  {[()]}
+    public static String isBalanced(String s) {
+        Stack<String> utilStack = new Stack<>();
+
+        for (int i = 0; i <= s.length() - 1; i++) {
+            String currentBracket = String.valueOf(s.charAt(i));
+            if (currentBracket.equals("(") || currentBracket.equals("{") || currentBracket.equals("[")) {
+                utilStack.push(currentBracket);
+            } else {
+                if (utilStack.isEmpty()) {
+                    return "NO";
+                }
+                String popVal = utilStack.pop();
+                if (popVal.equals("(") && !currentBracket.equals(")")) {
+                    return "NO";
+                }
+                if (popVal.equals("[") && !currentBracket.equals("]")) {
+                    return "NO";
+                }
+                if (popVal.equals("{") && !currentBracket.equals("}")) {
+                    return "NO";
+                }
+            }
+        }
+        if (utilStack.isEmpty()) {
+            return "YES";
+        } else {
+            return "NO";
+        }
+    }
+
 }

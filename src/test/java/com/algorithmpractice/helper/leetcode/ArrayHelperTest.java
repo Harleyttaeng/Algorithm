@@ -4,6 +4,10 @@ import org.junit.Test;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 
+import java.util.ArrayList;
+import java.util.Arrays;
+import java.util.List;
+
 import static org.junit.Assert.*;
 
 
@@ -319,4 +323,84 @@ public class ArrayHelperTest {
         int[] inputArray = {1,2};
         assertTrue("Failed to calculate if it can jump", ArrayHelper.canJump(inputArray));
     }
+
+    @Test
+    public void testRankTeams() {
+        String[] votes = {"WXYZ","XYZW"};
+        assertEquals("Failed to rank teams", "XWYZ", ArrayHelper.rankTeams(votes));
+    }
+
+    @Test
+    public void testCookies1() {
+        int K = 9;
+        List<Integer> A = new ArrayList<>();
+        A.add(2);
+        A.add(3);
+        A.add(4);
+        A.add(6);
+        A.add(6);
+        A.add(7);
+        assertEquals("Failed to calculate min operations",4, ArrayHelper.cookies(K,A));
+    }
+
+    @Test
+    public void testCookies2() {
+        int K = 10;
+        List<Integer> A = new ArrayList<>();
+        A.add(1);
+        A.add(1);
+        A.add(1);
+        assertEquals("Failed to calculate min operations",-1, ArrayHelper.cookies(K,A));
+    }
+
+    @Test
+    public void testCookies3() {
+        int K = 90;
+        List<Integer> A = new ArrayList<>();
+        A.add(13);
+        A.add(47);
+        A.add(74);
+        A.add(12);
+        A.add(89);
+        A.add(74);
+        A.add(18);
+        A.add(38);
+        assertEquals("Failed to calculate min operations",5, ArrayHelper.cookies(K,A));
+    }
+
+    @Test
+    public void testCookies4() {
+        int K = 9;
+        List<Integer> A = new ArrayList<>();
+        A.add(1);
+        A.add(62);
+        A.add(14);
+        assertEquals("Failed to calculate min operations",1, ArrayHelper.cookies(K,A));
+    }
+
+
+    @Test
+    public void testMaxProfit1() {
+        int[] prices = new int[]{7,1,5,3,6,4};
+        assertEquals("Failed to get max profit", 5, ArrayHelper.maxProfit(prices));
+    }
+
+    @Test
+    public void testMaxProfit2() {
+        int[] prices = new int[]{2,4,1};
+        assertEquals("Failed to get max profit", 2, ArrayHelper.maxProfit(prices));
+    }
+
+    @Test
+    public void testMaxProfit3() {
+        int[] prices = new int[]{3,2,6,5,0,3};
+        assertEquals("Failed to get max profit", 4, ArrayHelper.maxProfit(prices));
+    }
+
+    @Test
+    public void testLetterCombinations() {
+        String digits = "23";
+        assertEquals("failed to calculate the digits combo", Arrays.asList("ad","ae","af","bd","be","bf","cd","ce","cf"), ArrayHelper.letterCombinations(digits));
+    }
+
 }
